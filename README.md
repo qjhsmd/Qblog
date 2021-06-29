@@ -1,5 +1,5 @@
 # gblog
-<p align="center">
+<!-- <p align="center">
   <img width="80" src="http://cdn.fengziy.cn/gblog/logo.svg"/>
 </p>
 <p align="center">
@@ -20,7 +20,7 @@
   <a href="https://github.com/fengziye/Gblog/releases">
       <img src="https://img.shields.io/github/release/fengziye/Gblog.svg" alt="GitHub release">
   </a>
-</p>
+</p> -->
 
 <!-- 仓库：[码云](https://gitee.com/fengziy/Gblog) | [github](https://github.com/fengziye/Gblog)  
 [预览demo](http://static.fengziy.cn/Gblog/) -->
