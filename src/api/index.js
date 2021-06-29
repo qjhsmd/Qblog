@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function fetchList(params) {
     return request({
-        url: '/post/list',
+        url: '/api/list_artcle',
         method: 'get',
         params: params
     })
@@ -10,7 +10,7 @@ export function fetchList(params) {
 
 export function fetchFocus() {
     return request({
-        url: '/focus/list',
+        url: '/api/focus/list',
         method: 'get',
         params: {}
     })
@@ -18,7 +18,7 @@ export function fetchFocus() {
 
 export function fetchCategory() {
     return request({
-        url: '/category',
+        url: '/api/classify',
         method: 'get',
         params: {}
     })
@@ -34,7 +34,7 @@ export function fetchFriend() {
 
 export function fetchSocial() {
     return request({
-        url: '/social',
+        url: '/api/social',
         method: 'get',
         params: {}
     });
@@ -53,5 +53,19 @@ export function fetchComment() {
         url: '/comment',
         method: 'get',
         params: {}
+    })
+}
+// node 后端
+export function baseInfo(){
+   return request({
+       url:'/api/baseInfo',
+       method:'get',
+   })
+}
+export function artcleDetail(params) {
+    return request({
+        url:'/api/artcle_detail',
+        method:'get',
+        params
     })
 }

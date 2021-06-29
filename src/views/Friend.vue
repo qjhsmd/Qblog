@@ -57,8 +57,8 @@
             }
         },
         mounted() {
-            this.getWebSiteInfo();
-            this.fetchFriend();
+            // this.getWebSiteInfo();
+            // this.fetchFriend();
         }
     }
 </script>

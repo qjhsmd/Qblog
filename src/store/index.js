@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import {getTimeInterval} from '../utils/index'
-import {fetchSocial,fetchSiteInfo} from '@/api'
+import {fetchSocial,fetchSiteInfo,baseInfo} from '@/api'
 
 Vue.use(Vuex)
 // 略:后台获取系统运行时间
@@ -44,7 +44,7 @@ const actions = {
             if (state.websiteInfo){
                 resolve(state.websiteInfo)
             }else {
-                fetchSiteInfo().then(res => {
+                baseInfo().then(res => {
                     let data = res.data || {}
                     commit('SET_SITE_INFO',data);
                     resolve(data);

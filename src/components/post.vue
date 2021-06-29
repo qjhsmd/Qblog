@@ -10,9 +10,9 @@
                 <router-link :to="`/article/${post.id}`"><span v-if="post.isTop" style="color:#ff6d6d;font-weight:600">[置顶] </span>{{post.title}}</router-link>
             </h1>
             <div class="p-time">
-                <i class="iconfont iconmeditor-time"></i> {{post.pubTime | parseTime}}<i v-if="post.isHot" class="iconfont iconfire" style="margin-left: 5px;color: #ff6d6d;"></i>
+                <i class="iconfont iconmeditor-time"></i> {{parseTime( new Date(post.creat_time))}}<i v-if="post.isHot" class="iconfont iconfire" style="margin-left: 5px;color: #ff6d6d;"></i>
             </div>
-            <p class="summary">{{post.summary}}</p>
+            <p class="summary">{{post.artcle_describe}}</p>
             <footer class="entry-footer">
                 <div class="post-more">
                     <router-link :to="`/article/${post.id}`"><i class="iconfont iconfish-li" style="font-size: 25px;"></i></router-link>
@@ -21,11 +21,11 @@
                     <div class="comnum">
                         <span>
                             <i class="iconfont iconcomment"></i>
-                            <a href="https://zhebk.cn/Web/Akina.html">{{post.commentsCount}} 条评论</a>
+                            <a href="https://zhebk.cn/Web/Akina.html">{{post.comments_count}} 条评论</a>
                         </span>
                     </div>
                     <div class="views">
-                        <span><i class="iconfont iconeyes"></i>{{post.viewsCount}} 热度</span>
+                        <span><i class="iconfont iconeyes"></i>{{post.view_count}} 热度</span>
                     </div>
                 </div>
             </footer>
@@ -35,12 +35,17 @@
 </template>
 
 <script>
-
+import {parseTime} from '@/utils/index'
     export default {
         name: "post",
         props: {
             post: {
                 type: Object
+            }
+        },
+        data(){
+            return{
+                parseTime:parseTime
             }
         }
     }
