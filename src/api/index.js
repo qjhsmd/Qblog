@@ -69,10 +69,21 @@ export function artcleDetail(params) {
         params
     })
 }
+// export function creatMessage(data) {
+//     return request({
+//         url:'/api/creat_message',
+//         method:'post',
+//         data
+//     })
+// }
 export function creatMessage(data) {
     return request({
-        url:'/api/creatMessage',
+        url:'/admin/Hello',
         method:'post',
-        data
+        data:{
+            name2:'张三',
+            age1:12,
+            sex11:'男'
+        }
     })
 }
