@@ -10,7 +10,7 @@
                 <router-link :to="`/article/${post.id}`"><span v-if="post.isTop" style="color:#ff6d6d;font-weight:600">[置顶] </span>{{post.title}}</router-link>
             </h1>
             <div class="p-time">
-                <i class="iconfont iconmeditor-time"></i> {{parseTime( new Date(post.creat_time))}}<i v-if="post.isHot" class="iconfont iconfire" style="margin-left: 5px;color: #ff6d6d;"></i>
+                <i class="iconfont iconmeditor-time"></i> {{parseTime( new Date(post.create_time))}}<i v-if="post.isHot" class="iconfont iconfire" style="margin-left: 5px;color: #ff6d6d;"></i>
             </div>
             <p class="summary">{{post.artcle_describe}}</p>
             <footer class="entry-footer">

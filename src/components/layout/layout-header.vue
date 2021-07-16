@@ -15,7 +15,7 @@
             <div class="menu-item hasChild">
                 <a href="#">文章</a>
                 <div class="childMenu" v-if="category.length">
-                    <div class="sub-menu" v-for="item in category" :key="item.id"><router-link :to="`/category/${item.id}`">{{item.name}}</router-link></div>
+                    <div class="sub-menu" v-for="item in category" :key="item.id"><router-link :to="`/category/${item.id}`">{{item.classify_name}}</router-link></div>
                 </div>
             </div>
             <div class="menu-item"><router-link to="/friend">友链</router-link></div>
@@ -62,7 +62,6 @@
             },
             fetchCategory() {
                 fetchCategory().then(res => {
-                    console.log(res);
                     this.category = res.data
                 }).catch(err => {
                     console.log(err)

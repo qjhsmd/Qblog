@@ -13,7 +13,7 @@
             <h1 class="entry-title">{{details.title}}</h1>
             <hr />
             <div class="breadcrumbs">
-              <div id="crumbs">最后更新时间：{{parseTime( new Date(details.creat_time))}}</div>
+              <div id="crumbs">最后更新时间：{{parseTime( new Date(details.update_time))}}</div>
             </div>
           </header>
           <div class="entry-content">

@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function fetchList(params) {
     return request({
-        url: '/api/list_artcle',
+        url: '/api/artcle/blogList',
         method: 'get',
         params: params
     })
@@ -18,7 +18,7 @@ export function fetchFocus() {
 
 export function fetchCategory() {
     return request({
-        url: '/api/classify',
+        url: '/api/artcle/classify/findAll',
         method: 'get',
         params: {}
     })
@@ -34,7 +34,7 @@ export function fetchFriend() {
 
 export function fetchSocial() {
     return request({
-        url: '/api/social',
+        url: '/api/social/findAll',
         method: 'get',
         params: {}
     });
@@ -58,32 +58,21 @@ export function fetchComment() {
 // node 后端
 export function baseInfo(){
    return request({
-       url:'/api/baseInfo',
+       url:'/api/user/baseInfo',
        method:'get',
    })
 }
 export function artcleDetail(params) {
     return request({
-        url:'/api/artcle_detail',
+        url:'/api/artcle/blogDetail',
         method:'get',
         params
     })
 }
-// export function creatMessage(data) {
-//     return request({
-//         url:'/api/creat_message',
-//         method:'post',
-//         data
-//     })
-// }
 export function creatMessage(data) {
     return request({
-        url:'/admin/Hello',
+        url:'/api/msg/postMsg',
         method:'post',
-        data:{
-            name2:'张三',
-            age1:12,
-            sex11:'男'
-        }
+        data
     })
 }
