@@ -56,10 +56,10 @@ export default {
     return {
       features: [],
       postList: [],
-      params:{
-        pageSize:10,
-        page:1,
-        classify_id: this.$route.params.cate
+      params: {
+        pageSize: 10,
+        page: 1,
+        classify_id: this.$route.params.cate,
       },
       currPage: 1,
       hasNextPage: false,
@@ -78,13 +78,22 @@ export default {
       return this.$route.params.words;
     },
     category() {
-      return this.$route.params.cate;
+      return this.$route.query.classify;
     },
     hideSlogan() {
       return this.category || this.searchWords;
     },
     notice() {
       return this.$store.getters.notice;
+    },
+  },
+  watch: {
+    $route: {
+      handler() {
+        this.params.classify_id = this.$route.params.cate
+        this.fetchList();
+      },
+      deep: true,
     },
   },
   methods: {
@@ -118,7 +127,10 @@ export default {
         });
     },
     loadMore() {
-      fetchList({ page: this.currPage + 1,pageSize:this.params.pageSize }).then((res) => {
+      fetchList({
+        page: this.currPage + 1,
+        pageSize: this.params.pageSize,
+      }).then((res) => {
         this.postList = this.postList.concat(res.data.list || []);
         this.currPage = Number(res.data.page);
         this.hasNextPage = res.data.hasNextPage;

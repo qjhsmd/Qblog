@@ -3,7 +3,7 @@
         <div class="post-entry">
             <div class="feature">
                 <router-link :to="`/article/${post.id}`">
-                    <img :src="post.banner"/>
+                    <img :src="post.image_uri"/>
                 </router-link>
             </div>
             <h1 class="entry-title">

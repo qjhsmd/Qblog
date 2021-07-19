@@ -14,7 +14,7 @@ const routes = [
     {
         path: '/category/:cate',
         name: 'category',
-        component: () => import('../views/Home.vue'),
+        component: () => import('../views/Category.vue'),
         meta: { title: '分类', params: 'cate'}
     },
     {

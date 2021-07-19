@@ -10,6 +10,10 @@ module.exports = {
                 target: `http://10.31.52.38:3000`,
                 changeOrigin: true
               },
+            '/public': {
+                target: `http://10.31.52.38:3000`,
+                changeOrigin: true
+              },
         }
     },
     lintOnSave: false
