@@ -37,7 +37,7 @@
         props:{
             src:{
                 type: String,
-                default: 'https://s1.ax1x.com/2020/05/23/YxaLMq.jpg'
+                default: require('@/assets/staff1.jpg')//https://s1.ax1x.com/2020/05/23/YxaLMq.jpg
             },
             isHome:{
                 type: [Boolean,String],
@@ -138,7 +138,7 @@
             width: 60%;
             font-size: 14px;
             color: #EAEADF;
-            background: rgba(0, 0, 0, 0.66);
+            // background: rgba(0, 0, 0, 0.66);
             padding: 20px 30px;
             margin: 30px auto 0 auto;
             font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;

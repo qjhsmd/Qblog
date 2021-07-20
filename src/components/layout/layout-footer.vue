@@ -12,7 +12,7 @@
             </div>
             <div class="footer-item">
                 <div>本站已苟活 {{runTimeInterval}}</div>
-                <div><a target="_blank" class="out-link" href="#">☞后台管理</a></div>
+                <div><a target="_blank" class="out-link" href="http://admin.cnnngt.top/dashboard">☞后台管理</a></div>
             </div>
         </div>
         <div class="copyright">Copyright © 2021 by <a target="_blank" class="out-link" href="http://blog.cnnngt.top">cnnngt.top</a> . All rights reserved. | <a target="_blank" class="out-link" href="http://www.beian.miit.gov.cn">粤ICP备2021061582号-2</a></div>
