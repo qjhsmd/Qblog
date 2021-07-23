@@ -76,3 +76,10 @@ export function creatMessage(data) {
         data
     })
 }
+export function addComment(data) {
+    return request({
+        url:'/api/artcle/addComment',
+        method:'post',
+        data
+    })
+} 

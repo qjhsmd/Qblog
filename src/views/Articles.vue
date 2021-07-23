@@ -8,16 +8,18 @@
       </div>
       <main class="site-main">
         <article class="hentry">
-            <header class="entry-header">
+          <header class="entry-header">
             <!-- 标题输出 -->
-            <h1 class="entry-title">{{details.title}}</h1>
+            <h1 class="entry-title">{{ details.title }}</h1>
             <hr />
             <div class="breadcrumbs">
-              <div id="crumbs">最后更新时间：{{parseTime( new Date(details.update_time))}}</div>
+              <div id="crumbs">
+                最后更新时间：{{ parseTime(new Date(details.update_time)) }}
+              </div>
             </div>
           </header>
           <div class="entry-content">
-          <p v-html="details.content"></p>
+            <p v-html="details.content"></p>
           </div>
           <!-- 文章底部 -->
           <section-title>
@@ -25,12 +27,14 @@
               <!-- 阅读次数 -->
               <div class="post-like">
                 <i class="iconfont iconeyes"></i>
-                <span class="count">{{details.view_count}}</span>
+                <span class="count">{{ details.view_count }}</span>
               </div>
               <!-- 文章标签 -->
               <div class="post-tags">
                 <i class="iconfont iconcategory"></i>
-                <router-link to="/category/web">{{details.classify_name}}</router-link>
+                <router-link to="/category/web">{{
+                  details.classify_name
+                }}</router-link>
               </div>
             </footer>
           </section-title>
@@ -73,18 +77,44 @@ import Banner from "@/components/banner";
 import sectionTitle from "@/components/section-title";
 import comment from "@/components/comment";
 import menuTree from "@/components/menu-tree";
-import { fetchComment,artcleDetail } from "../api";
-import {parseTime} from '@/utils/index'
+import { fetchComment, artcleDetail } from "../api";
+import { parseTime } from "@/utils/index";
 
 export default {
   name: "articles",
   data() {
     return {
-      parseTime:parseTime,
+      parseTime: parseTime,
       showDonate: false,
-      comments: [],
+      comments: [
+        {
+          id: 1,
+          comment: {
+            fromUserName: "asf",
+            // toUserId: 12,
+            toUserName: "博主",
+            content: "测试",
+          },
+          reply: [
+            {
+              id: 1,
+                  fromUserName: "asf",
+                  // toUserId: 12,
+                  toUserName: "vff",
+                  content: "测试2",
+            },
+            {
+              id: 2,
+                  fromUserName: "asf",
+                  // toUserId: 12,
+                  toUserName: "vff",
+                  content: "测试3",
+            },
+          ],
+        },
+      ],
       menus: [],
-      details:{}
+      details: {},
     };
   },
   components: {
@@ -104,7 +134,7 @@ export default {
         });
     },
     artcleDetail() {
-      artcleDetail({id:this.$route.params.id})
+      artcleDetail({ id: this.$route.params.id })
         .then((res) => {
           this.details = res.data || [];
         })
@@ -155,7 +185,7 @@ export default {
   },
   created() {
     // this.getComment()
-    this.artcleDetail()
+    this.artcleDetail();
   },
 };
 </script>
