@@ -82,4 +82,12 @@ export function addComment(data) {
         method:'post',
         data
     })
-} 
+}
+
+export function listComment(params) {
+    return request({
+        url:'/api/artcle/listComment',
+        method:'get',
+        params
+    })
+}

@@ -1,30 +1,29 @@
 <template>
   <div class="comment" :id="`comment${comment.id}`">
     <div class="comment-head">
-      <div class="user-avatar">
+      <div class="user-avatar" v-if="comment.fromUserAvatar">
         <img :src="comment.fromUserAvatar" alt="" />
       </div>
       <div class="head-right">
         <section-title>
-          <div
-            style="
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-            "
-          >
+          <div class="comment-user">
             <div>
-              <span class="from-user user-name">{{
+              <span class="from-user user-name" v-if="comment.fromUserName">{{
                 comment.fromUserName
               }}</span>
+              <span class="from-user user-name" v-else>热心网友</span>
               <span class="to-user" v-if="comment.toUserId"
                 ><span style="margin: 0 5px">@</span
                 ><span class="user-name">{{ comment.toUserName }}</span></span
               >
+              <span class="to-user" v-else
+                ><span style="margin: 0 5px">@</span
+                ><span class="user-name">楼主</span></span
+              >
             </div>
             <div style="font-size: 13px">
               <span style="color: #9c9c9c; margin-right: 20px">{{
-                comment.createTime | parseTime
+               new Date(comment.create_time) | parseTime
               }}</span>
               <span
                 @click.stop="showCommentEditor = true"
@@ -38,7 +37,7 @@
     </div>
     <div class="comment-body">
       <div class="content-text">
-        <p>{{ comment.content }}</p>
+        <p v-html="comment.content"></p>
       </div>
       <div v-if="showCommentEditor" @click.stop="">
         <comment-message-editor
@@ -109,6 +108,11 @@ export default {
   display: flex;
   .head-right {
     flex: 1;
+    .comment-user {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
   .user-name {
     color: #8fd0cc;

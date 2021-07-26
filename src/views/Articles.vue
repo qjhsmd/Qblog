@@ -51,13 +51,18 @@
             <!-- <p>转载：转载请注明原文链接 -<a href="/">{{details.title}}</a> </p> -->
           </div>
           <!--评论-->
+          <comment-message-editor
+          :inline="true"
+          buttonText="回复"
+          @submit="submitComment"
+        ></comment-message-editor>
           <div class="comments">
             <comment
               v-for="item in comments"
-              :key="item.comment.id"
-              :comment="item.comment"
+              :key="item.id"
+              :comment="item"
             >
-              <template v-if="item.reply.length">
+              <template v-if="item.reply && item.reply.length">
                 <comment
                   v-for="reply in item.reply"
                   :key="reply.id"
@@ -77,9 +82,9 @@ import Banner from "@/components/banner";
 import sectionTitle from "@/components/section-title";
 import comment from "@/components/comment";
 import menuTree from "@/components/menu-tree";
-import { fetchComment, artcleDetail } from "../api";
+import { fetchComment, artcleDetail, addComment, listComment } from "../api";
 import { parseTime } from "@/utils/index";
-
+import commentMessageEditor from "comment-message-editor";
 export default {
   name: "articles",
   data() {
@@ -87,31 +92,35 @@ export default {
       parseTime: parseTime,
       showDonate: false,
       comments: [
-        {
-          id: 1,
-          comment: {
-            fromUserName: "asf",
-            // toUserId: 12,
-            toUserName: "博主",
-            content: "测试",
-          },
-          reply: [
-            {
-              id: 1,
-                  fromUserName: "asf",
-                  // toUserId: 12,
-                  toUserName: "vff",
-                  content: "测试2",
-            },
-            {
-              id: 2,
-                  fromUserName: "asf",
-                  // toUserId: 12,
-                  toUserName: "vff",
-                  content: "测试3",
-            },
-          ],
-        },
+      //   {
+      //     id: 1,
+      //     comment: {
+      //       fromUserAvatar:'',
+      //       fromUserName: "asf",
+      //       toUserId: 1,
+      //       toUserName: "博主",
+      //       content: "测试",
+      //     },
+      //     // reply: [
+      //     //   {
+      //     //     id: 1,
+      //     //         fromUserName: "asf",
+      //     //         // toUserId: 12,
+      //     //         toUserName: "vff",
+      //     //         content: "测试2",
+      //     //   },
+      //     // ],
+      //   },
+      //   {
+      //     id: 2,
+      //     comment: {
+      //       fromUserAvatar:'',
+      //       fromUserName: "asf",
+      //       // toUserId: 12,
+      //       toUserName: "博主",
+      //       content: "测试",
+      //     },
+      //   },
       ],
       menus: [],
       details: {},
@@ -122,12 +131,30 @@ export default {
     sectionTitle,
     comment,
     menuTree,
+    commentMessageEditor,
   },
   methods: {
-    getComment() {
-      fetchComment()
+    submitComment(v){
+      let parmas ={
+        content:v,
+        artcleId:this.$route.params.id
+      }
+      addComment(parmas)
         .then((res) => {
-          this.comments = res.data || [];
+          this.getComment()
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+    },
+    getComment() {
+      let parmas ={
+        artcleId:this.$route.params.id
+      } 
+      listComment(parmas)
+        .then((res) => {
+          this.comments = res.data.list || [];
         })
         .catch((err) => {
           console.log(err);
@@ -181,10 +208,12 @@ export default {
     },
   },
   mounted() {
-    // this.createMenus()
+    this.$nextTick(()=>{
+      this.createMenus()
+    })
   },
   created() {
-    // this.getComment()
+    this.getComment()
     this.artcleDetail();
   },
 };
