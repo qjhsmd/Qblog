@@ -14,7 +14,7 @@
             <hr />
             <div class="breadcrumbs">
               <div id="crumbs">
-                最后更新时间：{{ parseTime(new Date(details.update_time)) }}
+                最后更新时间：{{ parseTime(new Date(details.modify_time?details.modify_time: details.create_time)) }}
               </div>
             </div>
           </header>
