@@ -3,7 +3,8 @@
         <div class="post-entry">
             <div class="feature">
                 <router-link :to="`/article/${post.id}`">
-                    <img :src="post.image_uri"/>
+                    <img v-if="post.image_uri" :src="post.image_uri"/>
+                    <img v-else src="../assets/icon.jpg"/>
                 </router-link>
             </div>
             <h1 class="entry-title">
@@ -21,7 +22,7 @@
                     <div class="comnum">
                         <span>
                             <i class="iconfont iconcomment"></i>
-                            <a href="https://zhebk.cn/Web/Akina.html">{{post.comments_count}} 条评论</a>
+                            <a href="#">{{post.comments_count?post.comments_count:0}} 条评论</a>
                         </span>
                     </div>
                     <div class="views">
